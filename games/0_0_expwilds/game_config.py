@@ -13,57 +13,63 @@ class GameConfig(Config):
         super().__init__()
         self.game_id = "0_0_expwilds"
         self.provider_numer = 0
-        self.working_name = "Expanding Wilds"
-        self.wincap = 5000
+        self.working_name = "Premium Dragon Wilds"  # Premium branding
+        self.wincap = 10000  # Increased win cap for premium appeal
         self.win_type = "lines"
-        self.rtp = 0.97
+        self.rtp = 0.96  # Standard RTP for premium games
         self.construct_paths()
 
-        # Game Dimensions
+        # Game Dimensions - Enhanced premium setup
         self.num_reels = 5
         self.num_rows = [5] * self.num_reels  # Optionally include variable number of rows per reel
-        # Board and Symbol Properties
+        
+        # Enhanced Paytable with better premium payouts
         self.paytable = {
-            (5, "W"): 20,
-            (4, "W"): 10,
-            (3, "W"): 5,
-            (5, "H1"): 20,
-            (4, "H1"): 10,
-            (3, "H1"): 5,
-            (5, "H2"): 15,
-            (4, "H2"): 5,
-            (3, "H2"): 3,
-            (5, "H3"): 10,
-            (4, "H3"): 3,
-            (3, "H3"): 2,
-            (5, "H4"): 8,
-            (4, "H4"): 2,
-            (3, "H4"): 1,
-            (5, "L1"): 5,
-            (4, "L1"): 1,
-            (3, "L1"): 0.5,
-            (5, "L2"): 3,
-            (4, "L2"): 0.7,
-            (3, "L2"): 0.3,
-            (5, "L3"): 3,
-            (4, "L3"): 0.7,
-            (3, "L3"): 0.3,
-            (5, "L4"): 2,
-            (4, "L4"): 0.5,
-            (3, "L4"): 0.2,
-            (5, "L5"): 2,
-            (4, "L5"): 0.5,
-            (3, "L5"): 0.2,
+            # Premium Wild pays (enhanced)
+            (5, "W"): 50,  # Increased from 20
+            (4, "W"): 25,  # Increased from 10  
+            (3, "W"): 10,  # Increased from 5
+            # High symbols - premium fantasy theme
+            (5, "H1"): 40,  # Dragon - premium symbol
+            (4, "H1"): 20,
+            (3, "H1"): 8,
+            (5, "H2"): 30,  # Phoenix 
+            (4, "H2"): 15,
+            (3, "H2"): 6,
+            (5, "H3"): 25,  # Unicorn
+            (4, "H3"): 12,
+            (3, "H3"): 5,
+            (5, "H4"): 20,  # Griffin
+            (4, "H4"): 10,
+            (3, "H4"): 4,
+            # Medium symbols - gems/crystals
+            (5, "M1"): 15,  # Ruby
+            (4, "M1"): 6,
+            (3, "M1"): 2,
+            (5, "M2"): 12,  # Emerald
+            (4, "M2"): 5,
+            (3, "M2"): 1.5,
+            # Low symbols - enhanced values
+            (5, "L1"): 8,
+            (4, "L1"): 3,
+            (3, "L1"): 1,
+            (5, "L2"): 6,
+            (4, "L2"): 2,
+            (3, "L2"): 0.8,
+            (5, "L3"): 5,
+            (4, "L3"): 1.5,
+            (3, "L3"): 0.6,
             (99, "X"): 0,  # only included for symbol register
         }
+        # Enhanced Paylines - 25 premium paylines for better hit frequency
         self.paylines = {
-            # horizontal lines
+            # Horizontal lines
             1: [0, 0, 0, 0, 0],
             2: [1, 1, 1, 1, 1],
             3: [2, 2, 2, 2, 2],
             4: [3, 3, 3, 3, 3],
             5: [4, 4, 4, 4, 4],
-            # W and M shaped lines
+            # Zigzag patterns 
             6: [0, 1, 0, 1, 0],
             7: [1, 2, 1, 2, 1],
             8: [2, 3, 2, 3, 2],
@@ -72,35 +78,66 @@ class GameConfig(Config):
             11: [2, 1, 2, 1, 2],
             12: [3, 2, 3, 2, 3],
             13: [4, 3, 4, 3, 4],
-            # diagonal lines
+            # Diagonal lines
             14: [0, 1, 2, 3, 4],
             15: [4, 3, 2, 1, 0],
+            # V-shaped patterns
+            16: [0, 1, 2, 1, 0],
+            17: [1, 2, 3, 2, 1],
+            18: [2, 3, 4, 3, 2],
+            19: [4, 3, 2, 3, 4],
+            20: [3, 2, 1, 2, 3],
+            # Additional premium patterns
+            21: [0, 2, 1, 2, 0],
+            22: [1, 3, 2, 3, 1],
+            23: [2, 4, 3, 4, 2],
+            24: [0, 1, 3, 1, 0],
+            25: [4, 2, 1, 2, 4],
         }
         self.include_padding = True
+        
+        # Enhanced Special Symbols for premium features
         self.special_symbols = {
             "wild": ["W"],
             "scatter": ["S"],
             "multiplier": ["W"],
             "prize": ["P"],
+            "bonus": ["B"],  # New bonus symbol
+            "mega_wild": ["MW"],  # New mega wild 
         }
 
-        self.freespin_triggers = {self.basegame_type: {3: 8, 4: 12, 5: 15}}  # No retriggers in freegame
+        # Enhanced Free Spin System with progressive triggers
+        self.freespin_triggers = {
+            self.basegame_type: {3: 10, 4: 15, 5: 20},  # Enhanced free spins
+            self.freegame_type: {3: 5, 4: 8, 5: 12}  # Retriggers enabled
+        }
+        
+        # Anticipation mechanics for premium feel
         self.anticipation_triggers = {
             self.basegame_type: min(self.freespin_triggers[self.basegame_type].keys()) - 1,
         }
-        # Reels
-        reels = {"BR0": "BR0.csv", "FR0": "FR0.csv", "SSR": "SSR.csv", "SSWCAP": "SSWCAP.csv"}
+        # Enhanced Reels with premium symbol distribution
+        reels = {
+            "PBR0": "PBR0.csv",      # Original base reel
+            "PPBR0": "PPBR0.csv",    # Premium base reel with better symbol distribution
+            "PFR0": "PFR0.csv",      # Original free reel
+            "PPFR0": "PPFR0.csv",    # Premium free reel with enhanced features
+            "SSR": "SSR.csv",      # Superspin reel
+            "SSWCAP": "SSWCAP.csv" # Superspin wincap reel
+        }
         self.reels = {}
         for r, f in reels.items():
             self.reels[r] = self.read_reels_csv(os.path.join(self.reels_path, f))
 
+        # Enhanced reel assignments for premium experience
         self.padding_reels = {
-            "basegame": self.reels["BR0"],
-            "freegame": self.reels["FR0"],
+            "basegame": self.reels["PPBR0"],    # Use premium base reel
+            "freegame": self.reels["PPFR0"],    # Use premium free reel
             "superspin": self.reels["SSR"],
         }
 
         self.bet_modes = [
+            # Enhanced Base Game Mode
             BetMode(
                 name="base",
                 cost=1.0,
@@ -110,175 +147,206 @@ class GameConfig(Config):
                 is_feature=True,
                 is_buybonus=False,
                 distributions=[
+                    # Enhanced Wincap Distribution
                     Distribution(
                         criteria="wincap",
-                        quota=0.001,
+                        quota=0.0005,  # More exclusive for premium feel
                         win_criteria=self.wincap,
                         conditions={
                             "reel_weights": {
-                                self.basegame_type: {"BR0": 1},
-                                self.freegame_type: {"FR0": 1},
+                                self.basegame_type: {"PBR0": 1},
+                                self.freegame_type: {"PFR0": 1},
                             },
                             "mult_values": {
-                                self.freegame_type: {2: 200, 3: 80, 4: 40, 5: 30, 10: 10, 20: 5, 50: 1}
+                                # Progressive multipliers for premium experience
+                                self.freegame_type: {
+                                    2: 150, 3: 100, 5: 80, 10: 50, 20: 30, 50: 15, 100: 5, 200: 2, 500: 1
+                                }
                             },
-                            "landing_wilds": {0: 100, 1: 20, 2: 5, 3: 2},
-                            "scatter_triggers": {4: 1, 5: 2},
+                            "landing_wilds": {0: 50, 1: 30, 2: 15, 3: 8, 4: 2, 5: 1},  # Up to 5 wilds
+                            "scatter_triggers": {3: 1, 4: 3, 5: 5},  # Better scatter frequency
                             "force_wincap": True,
                             "force_freegame": True,
                         },
                     ),
+                    # Enhanced Free Game Distribution
                     Distribution(
                         criteria="freegame",
-                        quota=0.1,
+                        quota=0.08,  # Increased frequency
                         conditions={
                             "reel_weights": {
-                                self.basegame_type: {"BR0": 1},
-                                self.freegame_type: {"FR0": 1},
+                                self.basegame_type: {"PBR0": 1},
+                                self.freegame_type: {"PFR0": 1},
                             },
                             "mult_values": {
-                                self.freegame_type: {2: 300, 3: 100, 4: 30, 5: 20, 10: 5, 20: 5, 50: 1}
+                                self.freegame_type: {
+                                    2: 300, 3: 200, 5: 120, 10: 80, 20: 40, 50: 20, 100: 8, 200: 3
+                                }
                             },
-                            "landing_wilds": {0: 200, 1: 15, 2: 5, 3: 1},
-                            "scatter_triggers": {4: 1, 5: 2},
+                            "landing_wilds": {0: 100, 1: 50, 2: 25, 3: 10, 4: 3},
+                            "scatter_triggers": {3: 2, 4: 4, 5: 6},
                             "force_wincap": False,
                             "force_freegame": True,
                         },
                     ),
+                    # Premium High Win Distribution
                     Distribution(
-                        criteria="0",
-                        quota=0.4,
-                        win_criteria=0.0,
+                        criteria="bigwin",
+                        quota=0.02,
+                        win_criteria_range=(100, 500),  # Premium big wins
                         conditions={
-                            "reel_weights": {self.basegame_type: {"BR0": 1}},
+                            "reel_weights": {self.basegame_type: {"PBR0": 1}},
                             "force_wincap": False,
                             "force_freegame": False,
                         },
                     ),
+                    # Standard Win Distribution
                     Distribution(
                         criteria="basegame",
-                        quota=0.5,
+                        quota=0.45,
                         conditions={
-                            "reel_weights": {self.basegame_type: {"BR0": 1}},
+                            "reel_weights": {self.basegame_type: {"PBR0": 1}},
+                            "force_wincap": False,
+                            "force_freegame": False,
+                        },
+                    ),
+                    # No Win Distribution
+                    Distribution(
+                        criteria="0",
+                        quota=0.45,  # Balanced for good hit frequency
+                        win_criteria=0.0,
+                        conditions={
+                            "reel_weights": {self.basegame_type: {"PBR0": 1}},
                             "force_wincap": False,
                             "force_freegame": False,
                         },
                     ),
                 ],
             ),
+            # Premium Bonus Buy Mode - Enhanced
             BetMode(
                 name="bonus",
-                cost=200.0,
+                cost=100.0,  # More accessible bonus buy
                 rtp=self.rtp,
                 max_win=self.wincap,
                 auto_close_disabled=False,
                 is_feature=False,
                 is_buybonus=True,
                 distributions=[
+                    # Guaranteed premium feature entry
                     Distribution(
                         criteria="wincap",
-                        quota=0.001,
+                        quota=0.002,  # Higher chance for bonus buy
                         win_criteria=self.wincap,
                         conditions={
                             "reel_weights": {
-                                self.basegame_type: {"BR0": 1},
-                                self.freegame_type: {"FR0": 1},
+                                self.basegame_type: {"PBR0": 1},
+                                self.freegame_type: {"PFR0": 1},
                             },
                             "mult_values": {
-                                self.freegame_type: {2: 100, 3: 50, 4: 40, 5: 30, 10: 5, 20: 5, 50: 1}
+                                self.freegame_type: {
+                                    2: 100, 3: 80, 5: 60, 10: 40, 20: 25, 50: 15, 100: 8, 200: 3, 500: 1
+                                }
                             },
-                            "landing_wilds": {0: 100, 1: 15, 2: 10, 3: 2},
-                            "scatter_triggers": {4: 1, 5: 2},
+                            "landing_wilds": {0: 30, 1: 25, 2: 20, 3: 15, 4: 8, 5: 2},
+                            "scatter_triggers": {3: 1, 4: 2, 5: 3},
                             "force_wincap": True,
                             "force_freegame": True,
                         },
                     ),
+                    # Premium Free Game Distribution
                     Distribution(
                         criteria="freegame",
-                        quota=0.1,
+                        quota=0.998,  # Almost guaranteed entry
                         conditions={
                             "reel_weights": {
-                                self.basegame_type: {"BR0": 1},
-                                self.freegame_type: {"FR0": 1},
+                                self.basegame_type: {"PBR0": 1},
+                                self.freegame_type: {"PFR0": 1},
                             },
                             "mult_values": {
-                                self.freegame_type: {2: 500, 3: 100, 4: 80, 5: 60, 10: 5, 20: 2, 50: 1}
+                                self.freegame_type: {
+                                    2: 200, 3: 150, 5: 100, 10: 70, 20: 40, 50: 20, 100: 10, 200: 5
+                                }
                             },
-                            "scatter_triggers": {4: 1, 5: 2},
-                            "landing_wilds": {0: 200, 1: 20, 2: 5, 3: 1},
+                            "scatter_triggers": {3: 1, 4: 2, 5: 4},
+                            "landing_wilds": {0: 50, 1: 30, 2: 15, 3: 8, 4: 3},
                             "force_wincap": False,
                             "force_freegame": True,
                         },
                     ),
                 ],
             ),
+            # Enhanced Superspin Mode - Premium Hold & Win
             BetMode(
                 name="superspin",
-                cost=50,
+                cost=25,  # More accessible 
                 rtp=self.rtp,
                 max_win=self.wincap,
                 auto_close_disabled=False,
                 is_feature=True,
                 is_buybonus=False,
                 distributions=[
+                    # Premium Jackpot Distribution
                     Distribution(
                         criteria="wincap",
-                        quota=0.001,
+                        quota=0.002,  # Higher jackpot chance
                         win_criteria=self.wincap,
                         conditions={
                             "reel_weights": {
-                                self.basegame_type: {"SSR": 1, "SSWCAP": 5},
+                                self.basegame_type: {"SSR": 1, "SSWCAP": 8},  # Enhanced jackpot weights
                             },
                             "prize_values": {
-                                1: 10,
-                                2: 20,
-                                3: 50,
-                                5: 50,
-                                10: 50,
-                                25: 80,
-                                50: 30,
-                                100: 20,
-                                500: 5,
-                                10000: 4,
+                                # Enhanced prize ladder
+                                1: 5, 2: 8, 5: 15, 10: 25, 25: 40, 50: 60, 100: 80, 250: 50,
+                                500: 30, 1000: 15, 2500: 8, 5000: 4, 10000: 2
                             },
                             "force_wincap": True,
                             "force_freegame": False,
                         },
                     ),
+                    # Premium Win Distribution  
                     Distribution(
-                        criteria="0",
-                        quota=0.1,
-                        win_criteria=0.0,
+                        criteria="bigwin", 
+                        quota=0.15,  # Better big win frequency
+                        win_criteria_range=(50, 500),
                         conditions={
-                            "reel_weights": {self.basegame_type: {"SSR": 1}},
+                            "reel_weights": {
+                                self.basegame_type: {"SSR": 1, "SSWCAP": 2},
+                            },
+                            "prize_values": {
+                                1: 100, 2: 150, 5: 200, 10: 250, 25: 200, 50: 150, 
+                                100: 100, 250: 60, 500: 30, 1000: 10
+                            },
                             "force_wincap": False,
                             "force_freegame": False,
-                            "prize_values": {
-                                1: 500,
-                            },
                         },
                     ),
+                    # Standard Win Distribution
                     Distribution(
                         criteria="basegame",
-                        quota=0.9,
+                        quota=0.7,
                         conditions={
                             "reel_weights": {
                                 self.basegame_type: {"SSR": 1},
                             },
                             "prize_values": {
-                                1: 700,
-                                2: 200,
-                                3: 50,
-                                5: 30,
-                                10: 20,
-                                25: 10,
-                                50: 5,
-                                100: 5,
-                                500: 2,
-                                1000: 1,
+                                1: 500, 2: 300, 5: 200, 10: 100, 25: 50, 50: 30, 
+                                100: 15, 250: 8, 500: 3, 1000: 1
                             },
                             "force_wincap": False,
                             "force_freegame": False,
+                        },
+                    ),
+                    # Dead Spin Distribution  
+                    Distribution(
+                        criteria="0",
+                        quota=0.148,
+                        win_criteria=0.0,
+                        conditions={
+                            "reel_weights": {self.basegame_type: {"SSR": 1}},
+                            "force_wincap": False,
+                            "force_freegame": False,
+                            "prize_values": {1: 1000},  # Minimal prize values for dead spins
                         },
                     ),
                 ],
