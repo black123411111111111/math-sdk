@@ -118,10 +118,10 @@ class GameConfig(Config):
         }
         # Enhanced Reels with premium symbol distribution
         reels = {
-            "PBR0": "PBR0.csv",      # Original base reel
-            "PPBR0": "PPBR0.csv",    # Premium base reel with better symbol distribution
-            "PFR0": "PFR0.csv",      # Original free reel
-            "PPFR0": "PPFR0.csv",    # Premium free reel with enhanced features
+            "BR0": "BR0.csv",      # Original base reel
+            "PBR0": "PBR0.csv",    # Premium base reel with better symbol distribution
+            "FR0": "FR0.csv",      # Original free reel
+            "PFR0": "PFR0.csv",    # Premium free reel with enhanced features
             "SSR": "SSR.csv",      # Superspin reel
             "SSWCAP": "SSWCAP.csv" # Superspin wincap reel
         }
@@ -131,8 +131,8 @@ class GameConfig(Config):
 
         # Enhanced reel assignments for premium experience
         self.padding_reels = {
-            "basegame": self.reels["PPBR0"],    # Use premium base reel
-            "freegame": self.reels["PPFR0"],    # Use premium free reel
+            "basegame": self.reels["PBR0"],    # Use premium base reel
+            "freegame": self.reels["PFR0"],    # Use premium free reel
             "superspin": self.reels["SSR"],
         }
 
@@ -193,7 +193,6 @@ class GameConfig(Config):
                     Distribution(
                         criteria="bigwin",
                         quota=0.02,
-                        win_criteria_range=(100, 500),  # Premium big wins
                         conditions={
                             "reel_weights": {self.basegame_type: {"PBR0": 1}},
                             "force_wincap": False,
@@ -308,7 +307,6 @@ class GameConfig(Config):
                     Distribution(
                         criteria="bigwin", 
                         quota=0.15,  # Better big win frequency
-                        win_criteria_range=(50, 500),
                         conditions={
                             "reel_weights": {
                                 self.basegame_type: {"SSR": 1, "SSWCAP": 2},
