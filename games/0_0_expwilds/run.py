@@ -11,21 +11,24 @@ from src.write_data.write_configs import generate_configs
 
 if __name__ == "__main__":
 
-    num_threads = 10
-    rust_threads = 20
-    batching_size = 50000
+    # Enhanced simulation parameters for premium game
+    num_threads = 8  # Optimized threading
+    rust_threads = 16  # Enhanced rust optimization
+    batching_size = 100000  # Larger batches for better performance
     compression = True
     profiling = False
 
+    # Enhanced simulation counts for premium accuracy
     num_sim_args = {
-        "base": int(1e4),
-        "bonus": int(1e4),
-        "superspin": int(1e4),
+        "base": int(5e5),  # 500k simulations for base game
+        "bonus": int(2e5),  # 200k simulations for bonus
+        "superspin": int(3e5),  # 300k simulations for superspin
     }
 
+    # Enhanced run conditions
     run_conditions = {
         "run_sims": True,
-        "run_optimization": True,
+        "run_optimization": True, 
         "run_analysis": True,
         "run_format_checks": True,
     }
