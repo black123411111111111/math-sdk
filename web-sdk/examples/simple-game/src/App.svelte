@@ -82,7 +82,7 @@
     }
   }
 
-  // Computed values
+  // Computed values - Svelte 4 reactive syntax
   $: displayBalance = gameState?.balance ? gameController?.apiToDisplay(gameState.balance.amount) ?? 0 : 0;
   $: displayWin = gameState?.lastWin ?? 0;
   $: canPlay = gameState?.state === 'idle' && displayBalance > 0;
@@ -106,14 +106,14 @@
       {/if}
 
       <button 
-        onclick={placeBet}
+        on:click={placeBet}
         disabled={!canPlay}
       >
         Place Bet
       </button>
       
       <button 
-        onclick={endRound}
+        on:click={endRound}
         disabled={!canEndRound}
       >
         End Round
