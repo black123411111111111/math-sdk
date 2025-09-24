@@ -25,3 +25,10 @@ __pycache__
 
 **/site/*
 
+# Web SDK dependencies and build output
+**/node_modules/
+**/dist/
+**/*.log
+**/package-lock.json
+**/yarn.lock
+
