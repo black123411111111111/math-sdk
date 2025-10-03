@@ -21,8 +21,8 @@ class OptimizationSetup:
                     "freegame": ConstructConditions(
                         rtp=0.35, hr=180, search_conditions={"symbol": "scatter"}  # Enhanced free game RTP
                     ).return_dict(),
-                    "bigwin": ConstructConditions(hr=50, rtp=0.15, av_win=200).return_dict(),  # New big win condition
-                    "basegame": ConstructConditions(hr=4.2, rtp=0.465).return_dict(),  # Enhanced hit rate
+                    "bigwin": ConstructConditions(hr=50, rtp=0.14, av_win=200).return_dict(),  # Big win condition
+                    "basegame": ConstructConditions(hr=4.2, rtp=0.462).return_dict(),  # Base game RTP (total = 0.96)
                 },
                 "scaling": ConstructScaling(
                     [
