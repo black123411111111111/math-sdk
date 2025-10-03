@@ -63,6 +63,12 @@ class GameConfig(Config):
             (5, "L3"): 5,
             (4, "L3"): 1.5,
             (3, "L3"): 0.6,
+            (5, "L4"): 4,
+            (4, "L4"): 1.2,
+            (3, "L4"): 0.5,
+            (5, "L5"): 3,
+            (4, "L5"): 1.0,
+            (3, "L5"): 0.4,
             # Gold Coin - Collection symbol
             (99, "GC"): 0,  # Triggers collection, no line pay
             (99, "X"): 0,  # only included for symbol register
@@ -363,74 +369,6 @@ class GameConfig(Config):
                             "force_wincap": False,
                             "force_freegame": False,
                             "prize_values": {1: 1000},  # Minimal prize values for dead spins
-                        },
-                    ),
-                ],
-            ),
-            # Dragon's Lair Hold & Win Bonus Mode
-            BetMode(
-                name="dragons_lair",
-                cost=0,  # Triggered by collection, no cost
-                rtp=self.rtp,
-                max_win=self.wincap,
-                auto_close_disabled=False,
-                is_feature=True,
-                is_buybonus=False,
-                distributions=[
-                    # Jackpot Distribution for Dragon's Lair
-                    Distribution(
-                        criteria="wincap",
-                        quota=0.005,  # 0.5% jackpot chance
-                        win_criteria=self.wincap,
-                        conditions={
-                            "reel_weights": {"dragons_lair": {"DLR0": 1}},
-                            "prize_values": {
-                                # Enhanced jackpot values
-                                10: 5, 25: 10, 50: 15, 100: 20, 250: 25, 500: 20,
-                                1000: 15, 2500: 10, 5000: 5, 10000: 3
-                            },
-                            "force_wincap": True,
-                            "force_freegame": False,
-                        },
-                    ),
-                    # High Win Distribution
-                    Distribution(
-                        criteria="bigwin",
-                        quota=0.15,
-                        conditions={
-                            "reel_weights": {"dragons_lair": {"DLR0": 1}},
-                            "prize_values": {
-                                5: 50, 10: 100, 25: 150, 50: 200, 100: 150,
-                                250: 100, 500: 50, 1000: 20, 2500: 5
-                            },
-                            "force_wincap": False,
-                            "force_freegame": False,
-                        },
-                    ),
-                    # Standard Win Distribution
-                    Distribution(
-                        criteria="basegame",
-                        quota=0.7,
-                        conditions={
-                            "reel_weights": {"dragons_lair": {"DLR0": 1}},
-                            "prize_values": {
-                                1: 300, 2: 250, 5: 200, 10: 150, 25: 100,
-                                50: 50, 100: 25, 250: 10, 500: 3
-                            },
-                            "force_wincap": False,
-                            "force_freegame": False,
-                        },
-                    ),
-                    # Low/No Win Distribution
-                    Distribution(
-                        criteria="0",
-                        quota=0.145,
-                        win_criteria=0.0,
-                        conditions={
-                            "reel_weights": {"dragons_lair": {"DLR0": 1}},
-                            "prize_values": {1: 1000},
-                            "force_wincap": False,
-                            "force_freegame": False,
                         },
                     ),
                 ],
