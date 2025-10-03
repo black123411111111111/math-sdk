@@ -12,7 +12,7 @@ class GameConfig(Config):
     def __init__(self):
         super().__init__()
         self.game_id = "0_0_expwilds"
-        self.provider_numer = 0
+        self.provider_number = 0
         self.working_name = "Premium Dragon Wilds"  # Premium branding
         self.wincap = 10000  # Increased win cap for premium appeal
         self.win_type = "lines"
